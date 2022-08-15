@@ -48,6 +48,9 @@ app.use(async (req, res, next) => {
 
 // ROUTES / LINK TO CONTROLLER
 app.use('/', require('./controllers/feedRoutes'));
+app.use('/post', require('./controllers/postRoutes'));
+app.use('/profile', require('./controllers/profileRoutes'));
+app.use('/user', require('./controllers/userRoutes'));
 
 // LISTENER
 app.listen(PORT, () => {
