@@ -20,3 +20,5 @@ const profileSchema = new mongoose.Schema({
     userImage: String,
     posts: Array
 })
+
+module.exports = mongoose.model('Profile', profileSchema);
