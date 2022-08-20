@@ -1,10 +1,10 @@
-const mongoose = require('mongose');
+const mongoose = require('mongoose');
 const commentSchema = require('./comment');
 
 
 const postSchema = new mongoose.Schema({
     profile: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Profile'
     },
     caption: {

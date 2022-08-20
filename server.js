@@ -37,20 +37,21 @@ mongoose.connection
 app.use(cors()); 
 app.use(morgan("dev")); 
 app.use(express.json());
-// app.use(async (req, res, next) => {
-//     const token = req.get('Authorization')
-//     if(token) {
-//         const user = await admin.auth().verifyIdToken(token.replace('Bearer ', ''));
-//         req.user = user;
-//     } else {
-//         req.user = null;
-//     }
-//     next();
-// })
+
+app.use(async (req, res, next) => {
+    const token = req.get('Authorization')
+    if(token) {
+        const user = await admin.auth().verifyIdToken(token.replace('Bearer ', ''));
+        req.user = user;
+    } else {
+        req.user = null;
+    }
+    next();
+})
 
 // ROUTES / LINK TO CONTROLLER
-// app.use('/', require('./controllers/feedRoutes'));
-// app.use('/post', require('./controllers/postRoutes'));
+app.use('/', require('./controllers/feedRoutes'));
+app.use('/post', require('./controllers/postRoutes'));
 // app.use('/profile', require('./controllers/profileRoutes'));
 // app.use('/user', require('./controllers/userRoutes'));
 
